@@ -50,7 +50,7 @@ int generateHCFQ(string f1, string f2)
 	int probab = rand() % 3;
 	int a,b,c,x;
 	string HCFQ;
-	if(probab == 1)
+	/*if(probab == 1)
 	{ 
 		x = (rand() % 101);
 		a = x*(rand() % 101);
@@ -62,23 +62,30 @@ int generateHCFQ(string f1, string f2)
 		a = rand() % 10000;
 		b = rand() % 10000;
 		c = rand() % 10000;
-	}
+	}*/
+	x = (rand() % 101);
+	a = x*(rand() % 101);
+	b = x*(rand() % 101);
+	c = x*(rand() % 101);
 	int q = rand() % 4;
 	switch (q)
 	{
 		case 0:
 		{
 			HCFQ = "You, " + f1 + " and " + f2 + " are asked by your class teacher to measure " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + " millilitres of water respectively. Find the size in millilitres of the largest vessel that all of you can use one by one to measure\n";
+			break;
 		}
 
 		case 1:
 		{
 			HCFQ = "Find the HCF of " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + "\n";
+			break;
 		}
 
 		case 2:
 		{
 			HCFQ = "Find the largest number which divides " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + "\n";
+			break;
 		}
 		case 3:
 		{
@@ -90,6 +97,7 @@ int generateHCFQ(string f1, string f2)
 			a -= ra;
 			b -= rb;
 			c -= rc;
+			break;
 		}
 	}
 	cout<<HCFQ;
@@ -121,21 +129,25 @@ int generateLCMQ(string f1, string f2)
 		case 0:
 		{
 			LCMQ = "You, " + f1 + " and " + f2 + " start walking from a point and walk " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + " steps at a time respectively. Find the minimum number of steps you and your friends would walk to be together again.\n";
+			break;
 		}
 
 		case 1:
 		{
 			LCMQ = "Find the LCM of " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + "\n";
+			break;
 		}
 
 		case 2:
 		{
 			LCMQ = "Find the smallest number can be divided by " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + "\n";
+			break;
 		}
 		case 3:
 		{
 			m = rand()%((min(a-1,min(b-1,c-1)))%16+1);
 			LCMQ = "Find the smallest number can be divided by " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + " leaving remainder of " + to_string(m) + " in all three cases.\n";
+			break;
 		}
 	}
 	cout<<LCMQ;
