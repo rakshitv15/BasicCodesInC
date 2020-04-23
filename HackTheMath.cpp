@@ -45,7 +45,7 @@ bool checkDivisibilityAnswer(int x, int d, string res)
 	else return 0;
 }
 
-int generateHCFQ(string f1, string f2)
+int generateHCFQ(string f1, string f2, string name, string city)
 {
 	int probab = rand() % 3;
 	int a,b,c,x;
@@ -63,7 +63,7 @@ int generateHCFQ(string f1, string f2)
 		b = rand() % 10000;
 		c = rand() % 10000;
 	}*/
-	x = (rand() % 101);
+	x = (rand() % 101)+2;
 	a = x*(rand() % 101);
 	b = x*(rand() % 101);
 	c = x*(rand() % 101);
@@ -90,13 +90,10 @@ int generateHCFQ(string f1, string f2)
 		case 3:
 		{
 			int ra,rb,rc;
-			ra = (rand()%((a+10)/10)+1) % gcd(a,gcd(b,c));
-			rb = (rand()%((b+10)/10)+1) % gcd(a,gcd(b,c));
-			rc = (rand()%((c+10)/10)+1) % gcd(a,gcd(b,c));
-			HCFQ = "Find the largest number which divides " + to_string(a) + ", " + to_string(b) + " and " + to_string(c) + " leaving remainder of " + to_string(ra) + ", " + to_string(rb) + " and " + to_string(rc) + " respectively\n";
-			a -= ra;
-			b -= rb;
-			c -= rc;
+			ra = (rand()%((a+10)/10)+1) % gcd(a,gcd(b,c)) + 2;
+			rb = (rand()%((b+10)/10)+1) % gcd(a,gcd(b,c)) + 3;
+			rc = (rand()%((c+10)/10)+1) % gcd(a,gcd(b,c)) + 4;
+			HCFQ = "Find the largest number which divides " + to_string(a+ra) + ", " + to_string(b+rb) + " and " + to_string(c+rc) + " leaving remainder of " + to_string(ra) + ", " + to_string(rb) + " and " + to_string(rc) + " respectively\n";
 			break;
 		}
 	}
@@ -104,24 +101,15 @@ int generateHCFQ(string f1, string f2)
 	return gcd(a,gcd(b,c));
 }
 
-int generateLCMQ(string f1, string f2)
+int generateLCMQ(string f1, string f2, string name, string city)
 {
 	string LCMQ;
-	int probab = rand() % 3;
+	int probab = rand() % 4;
 	int a,b,c,x;
-	if(probab == 1)
-	{ 
-		x = (rand() % 26);
-		a = x*(rand() % 26);
-		b = x*(rand() % 26);
-		c = x*(rand() % 26);
-	}
-	else
-	{ 
-		a = rand() % 100;
-		b = rand() % 100;
-		c = rand() % 100;
-	}
+	x = (rand() % 26) + 2;
+	a = x*(rand() % 26 + 2);
+	b = x*(rand() % 26 + 2);
+	c = x*(rand() % 26 + 2);
 	int q = rand() % 4;
 	int m = 0;
 	switch (q)
@@ -225,7 +213,7 @@ int main()
 				string f1 = friends[rand() % 3], f2;
 				f2 = f1;
 				while(f1 == f2) f2 = friends[rand() % 3];
-				int correct = generateHCFQ(f1,f2);
+				int correct = generateHCFQ(f1,f2,name,city);
 				cin>>x;
 				if(x == correct)
 				{
@@ -245,7 +233,7 @@ int main()
 				string f1 = friends[rand() % 3], f2;
 				f2 = f1;
 				while(f1 == f2) f2 = friends[rand() % 3];
-				int correct = generateLCMQ(f1,f2);
+				int correct = generateLCMQ(f1,f2,name,city);
 				cin>>x;
 				if(x == correct)
 				{
